@@ -1,33 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>FlightSurety</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#">FlightSurety</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>FlightSurety</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">FlightSurety</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-
-    <main class="container">
-
-        <div id="display-wrapper" class="top-20">
-        </div>
-        <div class="row top-20">
-            <label class="form">Flight</label> <input type="text" id="flight-number"> <btn class="btn btn-primary" id="submit-oracle">Submit to Oracles</btn>
-        </div>
-    </main>
-
-</body>
-
+        <main class="container">
+            <div id="display-wrapper" class="top-20"></div>
+            <div id="startup" class="top-20">
+                <button id="check-operational-status">Check Operational Status</button>
+            </div>
+            <div id="status" class="top-20"></div>
+            <div id="buy-insurance-section" class="top-20">
+                <h2>Buy insurance for flight</h2>
+                <table>
+                    <tr>
+                        <td><label class="form">Flight</label></td>
+                        <td>
+                            <select id="insurance-flights" name="insurance-flights">
+                                <option val="-1">Select flight</option>
+                                <option val="d">dummy</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="form">Amount in ETH</label></td>
+                        <td>
+                            <input
+                                id="amount"
+                                name="amount"
+                                type="number"
+                                required="required"
+                                step="0.00001"
+                                min="0.00001"
+                                max="10"
+                                value="1.00000"
+                            />
+                        </td>
+                        <td><button class="btn btn-primary" id="buy-insurance">Buy Insurance</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="top-20">
+                <h2>Am I Insured For</h2>
+                <table>
+                    <tr>
+                        <td><label class="form">Flight</label></td>
+                        <td>
+                            <select id="flight-number-insured" name="flight-number-insured">
+                                <option val="-1">Select flight</option>
+                                <option val="d">dummy</option>
+                            </select>
+                        </td>
+                        <td><button class="btn btn-primary" id="submit-ami">How much am I insured for?</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="top-20">
+                <h2>Check Flight Status</h2>
+                <table>
+                    <tr>
+                        <td><label class="form">Flight</label></td>
+                        <td>
+                            <select id="flight-number" name="flight-number">
+                                <option val="-1">Select flight</option>
+                                <option val="d">dummy</option>
+                            </select>
+                        </td>
+                        <td><button class="btn btn-primary" id="submit-oracle">Submit to Oracles</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="top-20">
+                <h2>Request Payout</h2>
+                <p>I think I'm owed some money.</p>
+                <button class="btn btn-primary" id="request-payment">Pay me</button>
+            </div>
+        </main>
+    </body>
 </html>
