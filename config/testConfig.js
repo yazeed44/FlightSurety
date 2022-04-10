@@ -7,7 +7,7 @@ var Config = async function(accounts) {
     
     // These test addresses are useful when you need to add
     // multiple users in test scripts
-    let testAddresses = [
+    const testAddresses = [
         "0x69e1CB5cFcA8A311586e3406ed0301C06fb839a2",
         "0xF014343BDFFbED8660A9d8721deC985126f189F3",
         "0x0E79EDbD6A727CfeE09A2b1d0A59F7752d5bf7C9",
@@ -20,11 +20,12 @@ var Config = async function(accounts) {
     ];
 
 
-    let owner = accounts[0];
-    let firstAirline = accounts[1];
+    const owner = accounts[0];
+    const firstAirline = accounts[1];
+    const firstAirlineName = "Airplane 0";
 
-    let flightSuretyData = await FlightSuretyData.new();
-    let flightSuretyApp = await FlightSuretyApp.new();
+    const flightSuretyData = await FlightSuretyData.new(firstAirline, firstAirlineName);
+    const flightSuretyApp = await FlightSuretyApp.new(flightSuretyData.address);
 
     
     return {
