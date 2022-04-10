@@ -1,8 +1,7 @@
-const webpack = require('webpack')
-const path = require('path')
+const webpack = require('webpack');
+const path = require('path');
 const nodeExternals = require('webpack-node-externals')
-const StartServerPlugin = require('start-server-webpack-plugin')
-
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 module.exports = {
     entry: [
         'webpack/hot/poll?1000',
@@ -11,7 +10,7 @@ module.exports = {
     watch: true,
     target: 'node',
     externals: [nodeExternals({
-        whitelist: ['webpack/hot/poll?1000']
+        allowlist: ['webpack/hot/poll?1000']
     })],
     module: {
         rules: [{
@@ -21,13 +20,18 @@ module.exports = {
         }]
     },
     plugins: [
-        new StartServerPlugin('server.js'),
-        new webpack.NamedModulesPlugin(),
+        new WebpackShellPluginNext({
+            onBuildEnd:{
+              scripts: ['node prod/server/server.js'],
+              blocking: false,
+              parallel: true
+            }
+          }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             "process.env": {
-                "BUILD_TARGET": JSON.stringify('server')
+                "BUILD_TARGET": 'development'
             }
         }),
     ],
