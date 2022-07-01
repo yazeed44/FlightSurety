@@ -1,6 +1,6 @@
 # FlightSurety
 
-FlightSurety is a sample application project for Udacity's Blockchain course.
+FlightSurety is a decentralized flight Insurance System on Ethereum. Passengers will be paid back 1.5x their insurance in the event their flight is delayed due a fault on the airline's part. Oracles are used to utilize third-party data to inform autonomous smart contract that a flight is delayed due to x reason.
 
 ## Install
 
